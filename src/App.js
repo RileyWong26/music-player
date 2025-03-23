@@ -5,7 +5,7 @@ import Player from './Components/Player';
 import React, {useState, useEffect} from 'react';
 
 function App() {
-  var [token, setToken] = useState('');
+  var [tokens, setTokens] = useState({});
   
   useEffect(()=>{
 
@@ -14,7 +14,7 @@ function App() {
         mode: 'cors'
       })
         .then(response => response.json())
-        .then(data => setToken(data.access_token))
+        .then(data => setTokens(data))
         .catch(error => console.log(error));
 
     }
@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {(token === '') ? <Login /> : <Player token={token} />}
-        <button onClick={()=> {console.log(token)}}>hiii </button>
+        {(Object.keys(tokens).length === 0) ? <Login /> : <Player player_token={tokens.access_token_player} profile_token={tokens.access_token_profile}/>}
+        <button onClick={()=> { console.log(Object.keys(tokens))}}>hiii </button>
       </header>
     </div>
   );

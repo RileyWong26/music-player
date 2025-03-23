@@ -6,6 +6,9 @@ const cb = require('cb');
 
 function Player(props) {
 
+    const player_token = props.player_token;
+    const profile_token = props.profile_token;
+
     const [player, setPlayer] = useState(undefined)
 
     useEffect(() => {
@@ -18,10 +21,9 @@ function Player(props) {
 
         window.onSpotifyWebPlaybackSDKReady = () =>{
 
-            const token = props.token
             const player = new window.Spotify.Player({
                 name: 'Web Playback SDK',
-                getOAuthToken: cb => { cb(token); },
+                getOAuthToken: cb => { cb(player_token); },
                 volume: 0.5
             });
 
@@ -39,15 +41,35 @@ function Player(props) {
         };
     }, []);
 
-
-    const devices = () => {
-        
+    // ---- USER DATA ----
+    var user = () => {
+        fetch('https://api.spotify.com/v1/me', {
+            method: 'GET',
+            headers:{
+                Authorization: 'Bearer ' + profile_token
+            }
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
     }
-
+    // --- DEVICE DATA 
+    var device = () => {
+        fetch('https://api.spotify.com/v1/me/player/devices', {
+            method: 'GET',
+            headers:{
+                Authorization: 'Bearer ' + profile_token
+            }
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+    }
     return(
         <div>
             Logged in
-            <button>Devices</button>
+            <button onClick={user}>User</button>
+            <button onClick={device}>device</button>
         </div>
     )
 
