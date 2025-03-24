@@ -7,7 +7,7 @@ function Login () {
         <div>
             LOGIN!
             <a href="http://127.0.0.1:5000/auth/login">
-                <button >login</button>
+                <button >Login using spotify <span>Premium required</span></button>
             </a>
         </div>
     )
