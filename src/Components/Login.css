@@ -1,12 +1,14 @@
 .Login{
     align-items: center;
     width: 50%;
+    height:90vh;
+    border-radius: 20px;
     /* background-color: gray; */
 }
 .Title{
     width: 100%;
     margin-bottom: 20%;
-    margin-top: 0%;
+    margin-top: 10%;
 
 }.Title2{
     width: 100%;
