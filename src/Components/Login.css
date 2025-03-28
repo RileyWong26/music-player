@@ -1,0 +1,12 @@
+.Login{
+    align-items: center;
+    width: 50%;
+    background-color: gray;
+}
+.Title{
+    width: 100%;
+}
+.LoginButton{
+    background-color: #22a144;
+    width: 100%;
+}
