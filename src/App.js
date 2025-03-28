@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {(Object.keys(tokens).length === 0) ? <Login /> : <Player player_token={tokens.access_token_player} profile_token={tokens.access_token_profile}/>}
-        <button onClick={()=> { console.log(Object.keys(tokens))}}>hiii </button>
+        {/* <button onClick={()=> { console.log(Object.keys(tokens))}}>hiii </button> */}
       </header>
     </div>
   );
