@@ -1,0 +1,35 @@
+.Login{
+    align-items: center;
+    width: 50%;
+    height:90vh;
+    border-radius: 20px;
+    /* background-color: gray; */
+}
+.Title{
+    width: 100%;
+    margin-bottom: 20%;
+    margin-top: 10%;
+
+}.Title2{
+    width: 100%;
+    margin-bottom: 5%;
+    margin-top: 0%;
+
+}
+.LoginLink{
+    background-color: #22a144;
+    width: 100%;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 20px;
+    align-items: center;
+}
+.LoginButton{
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    color: white;
+    background-color: #22a144;
+    font-family: "Verdana", sans-serif;
+    font-size: large;
+}
