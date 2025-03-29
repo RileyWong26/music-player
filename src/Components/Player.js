@@ -75,6 +75,7 @@ function Player(props) {
             <Devices profile_token={profile_token}/> */}
 
             {(device === undefined) ? <Devices devices={findDevice()}profile_token={profile_token} changeDevice={setDevice}/> : <p>Done</p>}
+            <button onClick={()=> console.log(device)}>device</button>
         </div>
     )
 
