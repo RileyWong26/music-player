@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from "react";
-
+import Devices from "./Devices";
 const cb = require('cb');
 
 
@@ -9,7 +9,8 @@ function Player(props) {
     const player_token = props.player_token;
     const profile_token = props.profile_token;
 
-    const [player, setPlayer] = useState(undefined)
+    const [player, setPlayer] = useState(undefined);
+    const [device, setDevice] = useState(undefined);
 
     useEffect(() => {
         
@@ -54,22 +55,26 @@ function Player(props) {
             .catch(error => console.log(error));
     }
     // --- DEVICE DATA 
-    var device = () => {
-        fetch('https://api.spotify.com/v1/me/player/devices', {
+    const findDevice = () => {
+        return fetch('https://api.spotify.com/v1/me/player/devices', {
             method: 'GET',
             headers:{
                 Authorization: 'Bearer ' + profile_token
             }
+        
         })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+        .then(response => response.json())
+        .then(data => {return data;})
+        .catch(error => console.log(error));
     }
     return(
         <div>
-            Logged in
+            {/* Logged in
             <button onClick={user}>User</button>
-            <button onClick={device}>device</button>
+            <button onClick={findDevice}>device</button>
+            <Devices profile_token={profile_token}/> */}
+
+            {(device === undefined) ? <Devices devices={findDevice()}profile_token={profile_token} changeDevice={setDevice}/> : <p>Done</p>}
         </div>
     )
 
